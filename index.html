@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pfp3-달콤커피</title>
+    <!-- reset -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favi.png">
+    <!-- 구글폰트 noto sans korean -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;700;900&display=swap" rel="stylesheet"> 
+    <!-- 구글폰트 jua -->
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet"> 
+    <!-- 구글폰트 Alfa Slab One  -->
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet"> 
+    <!-- css -->
+    <link rel="stylesheet" href="css/common.css" type="text/css">
+    <link rel="stylesheet" href="css/header.css" type="text/css">
+    <link rel="stylesheet" href="css/title.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link rel="stylesheet" href="css/footer.css" type="text/css">
+    <link rel="stylesheet" href="css/responsive.css" type="text/css">
+    <!-- 스위퍼 css -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <!-- JS cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- 스위퍼 JS --> 
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.js"></script>
+    <script>
+        $(function(){
+            let ww = window.innerWidth;
+            window.addEventListener('resize', function() {
+                ww = window.innerWidth;
+            });
+            // 반응형
+            if( ww < 769 ){
+                // 헤더 햄버거 버튼
+                $("header .allmenu").click(function(e){
+                    e.preventDefault();
+                    // 햄버거 버튼 모양 변경
+                    $(this).toggleClass("x");
+                    // 대메뉴 나오게
+                    $("header .gnb").toggleClass("moveShow");
+                });
+                // 모바일에서 대메뉴 클릭시 바로 이동 아니고 서브메뉴 나옴
+                $("header .gnb li .h4 a").attr("href","#");
+                $("header .gnb li").click(function(){                      
+                    $(this).children("header .gnb li .h4").toggleClass("rot180");
+                    $("header .gnb li").not(this).children("header .gnb li .h4").removeClass("rot180");
+                    $(this).children("header .gnb li .sub").slideToggle().toggleClass("rot180");
+                    $("header .gnb li").not(this).children("header .gnb li .sub").slideUp().removeClass("rot180");
+                });
+            }
+            
+
+            // 타이틀 슬라이드
+            $("#title .button li a").click(function(e){
+                e.preventDefault();
+                $(this).toggleClass("current");
+                $("#title .button li a").not(this).removeClass("current");
+            });
+
+            // 변수
+            mainTop = $("main").offset().top;
+            mainsectionTop = $("main section:eq(1)").offset().top;
+            windowTop = $(window).scrollTop();
+
+            $("header").addClass("show");
+            // 스크롤 이벤트
+            $(window).scroll(function(){
+                windowTop = $(window).scrollTop();
+                // 스크롤 내리면 대메뉴 올라감
+                if(windowTop > mainsectionTop / 5 ){
+                    $("header").removeClass("show");
+                }
+                if(windowTop < mainsectionTop / 5 ){
+                    $("header").addClass("show");
+                }
+                
+            });
+            // 타이틀 애니메이션 
+            // h2
+            $("#title h2.h2 span").addClass("h2Up");
+            // slide
+            $("#title .titleSlide").addClass("slideDown");            
+
+        });
+    </script>
+    <!-- 타이틀 슬라이드 -->
+    <script>
+        $(function(){
+            // 스위퍼
+            var swiper = new Swiper(".titleSlide", {
+                loop: true, // 계속 넘기기
+                effect: "fade", // 페이드
+                pagination: {
+                    el: ".swiper-pagination", // 버튼
+                clickable: true, 
+                },
+            });
+            // 타이틀 슬라이드 문구 페이드
+            $("#title .swiper-wrapper .t0 p").addClass("tSCurrent");
+            var slideN = $("#title .swiper-pagination-bullet-active").index();
+            $("#title .swiper-wrapper .t"+slideN).siblings().children("").removeClass("tSCurrent");
+            $("#title .swiper-wrapper .t"+slideN).children().addClass("tSCurrent");
+
+            setInterval(function(){
+                var slideN = $("#title .swiper-pagination-bullet-active").index();
+                $("#title .swiper-wrapper .t"+slideN).siblings().children("").removeClass("tSCurrent");
+                $("#title .swiper-wrapper .t"+slideN).children().addClass("tSCurrent");
+
+            },0);
+        });
+    </script>
+    <!-- popup -->
+    <script>
+        $(function(){
+            // 팝업 fadeIn
+            $("#popup").hide();
+            $("#popup").fadeIn(1000);
+            // 팝업 close 클릭시 제거            
+            $("a.close").click(function(){
+                $("#popup").hide();
+                return false;
+            });
+        });
+    </script>
+    <!-- aos 스크롤 이벤트 -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>    
+    <script>
+        $(function(){
+            AOS.init();
+            $("body").attr("data-aos-duration","1000");
+        });
+    </script>
+    <!-- parallax.js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+    <script>
+        $(function(){
+            var scene = document.querySelector('.imgWrap');
+            var parallaxInstance = new Parallax(scene,{
+                relativeInput: true
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- 상단 영역 -->
+    <header data-aos="fade-down">
+        <div class="wrap">
+            <h1 class="h1">
+                <a href="">Dal.Komm</a>
+            </h1>
+            <ul class="gnb">
+                <li>
+                    <h2 class="h4"><a href="">Dal.Komm</a></h2>
+                    <ul class="sub">
+                        <li><a href="">브랜드 이야기</a></li>
+                        <li><a href="">App 소개</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h2 class="h4"><a href="">메뉴 · 매장</a></h2>
+                    <ul class="sub">
+                        <li><a href="">메뉴</a></li>
+                        <li><a href="">매장찾기</a></li>
+                        <li><a href="">글로벌 달콤</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h2 class="h4"><a href="">창업안내</a></h2>
+                    <ul class="sub">
+                        <li><a href="">가맹점 개설 안내</a></li>
+                        <li><a href="">창업 상담 신청</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h2 class="h4"><a href="">새로운 소식</a></h2>
+                    <ul class="sub">
+                        <li><a href="">뉴스</a></li>
+                        <li><a href="">공지사항</a></li>
+                        <li><a href="">달콤 스토리</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h2 class="h4"><a href="">SHOP</a></h2>
+                </li>
+            </ul>
+            <a href="" class="allmenu">전체메뉴<span></span></a>
+        </div>
+    </header>
+    <!-- 타이틀 영역 -->
+    <div id="title">
+        <div class="wrap">
+            <h2 class="h2">
+                <span class="block">Dal.Komm</span>
+                <span class="block">Life Happens</span>
+                <span class="block">Coffee Helps</span>
+            </h2>
+            <div class="swiper titleSlide">   
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide t0 li">
+                        <p class="p">
+                            Oh, JEJU <br>
+                            달콤한 제주 한모금
+                        </p>
+                        <a href="" class="more">메뉴 보러가기</a>
+                    </li>
+                    <li class="swiper-slide t1 li">
+                        <p class="p">
+                            시그니처 텀블러 사용 시 <br>
+                            커피류 천원 즉시 할인! 
+                        </p>
+                        <a href="" class="more">이벤트 내용 확인</a>
+                    </li>
+                    <li class="swiper-slide t2 li">
+                        <p class="p">
+                            시그니처 텀블러 출시 <br>      
+                            건강한 지구를 위한 텀블러 습관
+                        </p>
+                        <a href="" class="more">지금 바로 구매하기</a>
+                    </li>
+                    <li class="swiper-slide t3 li">
+                        <p class="p">
+                            나의 달콤 커피나무 <br>
+                            앱 출석체크로 애밍매일 열리는 혜택
+                        </p>
+                        <a href="" class="more">이벤트 안내 보기</a>
+                    </li>
+                </ul>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div id="popup">
+                <h3 class="h3">STORE</h3>
+                <p class="p">새로워진 달콤<span class="block"></span> 덕소리버사이드</p>
+                <a href="" class="close">창닫기</a>
+            </div>
+        </div>
+    </div>
+    <!-- 내용 영역 -->
+    <main>
+        <!-- daily -->
+        <section id="daily">
+            <div class="wrap" data-aos="fade-up">
+                <div class="textWarp">
+                    <hgroup>
+                        <h2 class="h4">달콤, 상상이 일상이 되는 곳</h2>
+                        <h3 class="h1">Dal.Komm Life begins <br>
+                            with imagination
+                        </h3>
+                    </hgroup>
+                    <p class="p">가장 트랜디한 커피전문점, <br>
+                        그리고 다양한 음악과 문화를 소비하는 플랫폼으로서 맛과 식의 경험을 넘어 향유할 수 있는 공간이 되어 <br>
+                        여러분의 달콤한 상상, 행복한 상상을 응원하겠습니다. 
+                    </p>
+                </div>
+                <div class="imgWrap">
+                    <span class="img" data-depth="0.2"></span>
+                    <span class="big" data-depth="0.2"></span>
+                    <span class="small" data-depth="0.2"></span>
+                </div>
+            </div>
+        </section>
+        <!-- story -->
+        <section id="story">
+            <div class="wrap">
+                <h2 class="h2" data-aos="fade-up">환상의 바리스타 <img src="img/Dal_K.svg" alt="Dal.K">와 얼렁뚱땅 파티쉐 <img src="img/Fox_M.svg" alt="Fox.M"></h2>
+                <p class="p" data-aos="fade-up">그들의 이야기로 펼쳐지는 <span class="block"></span>
+                    달콤의 상상력을 기대해주세요 
+                </p>
+            </div>
+        </section>
+        <!-- playground -->
+        <section id="playground">
+            <div class="wrap">
+                <div class="text-wrap" data-aos="fade-up">
+                    <h2 class="h2">상상이 일상이 되는 <span class="block"></span>달콤의 놀이터</h2>
+                    <p class="p">MZ세대를 위한 PLAYGROUND, 오픈 된 공간을 자유롭게 경험하세요</p>
+                </div>
+                <!-- <div class="img-wrap box">
+                    <div class="mask">
+                        <img src="img/img_play_01.jpg" alt="PLAYGROUND food">
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="427.811" height="412.513" viewBox="0 0 427.811 412.513">
+                        <path d="M-22833.521-10015.779h240.322v410.513h-426.811" transform="translate(23020.01 10016.779)"></path>
+                    </svg>                    
+                </div>
+                <div class="img-wrap home">
+                    <div class="mask">
+                        <img src="img/img_play_02.jpg" alt="PLAYGROUND stay">
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="526.506" height="489.221" viewBox="0 0 526.506 489.221">
+                        <path d="M-22369.43-9440.312v-388.535l324.756-98.636 199.75 66.523v420.647h-318.918" transform="translate(22370.43 9928.533)"></path>
+                    </svg>
+                </div>
+                <div class="img-wrap cir">
+                    <div class="mask">
+                        <img src="img/img_play_03.jpg" alt="PLAYGROUND story">
+                    </div>
+                    <svg data-name="그룹 2207" xmlns="http://www.w3.org/2000/svg" width="491.549" height="491.549" viewBox="0 0 491.549 491.549">
+                        <defs>
+                            <clipPath id="a">
+                                <path d="M0 0h491.549v491.549H0z"></path>
+                            </clipPath>
+                        </defs>
+                        <g style="clip-path:url(#a)">
+                            <path d="M489.514 245.008c0 135.038-109.469 244.509-244.509 244.509S.5 380.046.5 245.008 109.967.5 245.005.5" transform="translate(.768 .765)"></path>
+                        </g>
+                    </svg>
+                </div> -->
+            </div>
+        </section>
+        <!-- experience -->
+        <section id="experience">
+            <div class="wrap">
+                <div class="textarea" data-aos="fade-zoom-in" data-aos-duration="1000" data-delay="500" data-aos-offset="0">
+                    <h2 class="h2">달콤이 선사하는 다채로운 경험</h2>
+                    <p class="p">커피의 본질적인 것을 통한 커피의 전문성을 부각 시키는 컨텐츠와 함께 <br>
+                        비쥬얼, 맛, 건강함, 그리고 마시는 재미까지 함께 선사합니다
+                    </p>
+                </div>
+               <div class="imagearea">
+                   <div class="menu">
+                       <h2 class="hide">메뉴</h2>
+                   </div>
+               </div>
+                
+            </div>
+        </section>
+        <!-- newdalkomm -->
+        <section id="newdalkomm">
+            <div class="wrap">
+                <div class="textArea" data-aos="fade-zoom-in" data-aos-duration="1000" data-delay="500" data-aos-offset="0">
+                    <h2 class="h2">새로워진 달콤을 만나보세요</h2>
+                    <p class="p">앱을 사용하는 고객님을 위한 달콤한 혜택이 준비되어 있습니다</p>
+                </div>
+                <ul class="imgList">
+                    <div class="left" data-aos="fade-right">
+                        <li data-aos="fade-right"><img src="img/object_01.png" alt="1"></li>
+                        <li data-aos="fade-right"><img src="img/object_02.png" alt="2"></li>
+                        <li data-aos="fade-right"><img src="img/object_03.png" alt="3"></li>
+                        <li data-aos="fade-right"><img src="img/object_04.png" alt="4"></li>
+                    </div>
+                    <div class="phoneImg">
+                        <img src="img/object_phone_01.gif" alt="phone">
+                    </div>
+                    <div class="right" data-aos="fade-left">
+                        <li data-aos="fade-left"><img src="img/object_05.png" alt="5"></li>
+                        <li data-aos="fade-left"><img src="img/object_06.png" alt="6"></li>
+                        <li data-aos="fade-left"><img src="img/object_07.png" alt="7"></li>
+                        <li data-aos="fade-left"><img src="img/object_08.png" alt="8"></li>
+                    </div>                    
+                </ul>
+            </div>
+        </section>
+        <!-- supporters -->
+        <section id="supporters">
+            <div class="wrap">
+                <h2 class="h2" data-aos="fade-zoom-in" data-aos-duration="1000" data-delay="500" data-aos-offset="0">카페 창업의 꿈,<br>
+                    달콤이 서포터즈가 되겠습니다 </h2>
+                <p class="p" data-aos="fade-zoom-in" data-aos-duration="1000" data-delay="500" data-aos-offset="0">달콤은 파트너 여러분들의 다양한 창업 조건에 맞는 ‘맞춤형 점포 개설’을 통해<br>
+                    카페 창업의 문턱을 낮추고 진정한 상생의 가치를 구현합니다 </p>
+                <a href="" class="franchisee">가맹점 개설 안내</a>
+            </div>
+        </section>
+    </main>
+    <!-- 하단 영역 -->
+    <footer>
+        <div class="wrap">
+            <div class="top">
+                <h1 class="h1"><a href="">Dal.Komm</a></h1>
+                <ul class="fnb">
+                    <li>
+                        <h2 class="h4">고객을 위한 달콤</h2>
+                        <ul class="fSub">
+                            <li><a href="">문의하기 (Contact Us)</a></li>
+                            <li><a href="">고객상담센터 1661-1399</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="h4">파트너를 위한 달콤</h2>
+                        <ul class="fSub">
+                            <li><a href="">협력업체 문의</a></li>
+                            <li><a href="">가맹 문의</a></li>
+                            <li><a href="">제휴·마케팅 문의</a></li>
+                            <li><a href="">브랜드 소개서</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2 class="h4">개인정보 보호 및 약관</h2>
+                        <ul class="fSub">
+                            <li><a href="">개인정보 처리방침</a></li>
+                            <li><a href="">서비스 이용약관</a></li>
+                            <li><a href="">위치기반서비스 이용약관</a></li>
+                            <li><a href="">영상정보 처리기기 운영관리 방침</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom">
+                <select name="FAMLYSITE">
+                    <option value="">FAMILY SITE</option>
+                    <option value="">다날</option>
+                    <option value="">다날페이먼트</option>
+                    <option value="">다날엔터테인먼트</option>
+                    <option value="">비트코퍼레이션</option>
+                    <option value="">다날핀테크</option>
+                    <option value="">다날 재팬</option>
+                    <option value="">플렉스페이</option>
+                    <option value="">쏘시오리빙</option>
+                    <option value="">바통</option>
+                    <option value="">비밀리</option>
+                    <option value="">워너아이</option>
+                </select>
+                <address><strong>주)다날에프엔비 +</strong> | 주소지 : 경기도 성남시 분당구 황새울로 359번길 7, 한국정보공학 3층<br>
+                    대표이사 : 박경철 | 사업자등록번호 : 144-81-09353 | 통신판매업신고 : 제 2016-성남분당-0680 호<br>
+                    Copyright ⓒ 2022 (주)달콤 All Rights Reserved. </address>
+                <div class="download">
+                    <a href="" class="appStore">app store</a>
+                    <a href="" class="palyStore">google play</a>
+                    <a href="" class="qrCode">qr code</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
