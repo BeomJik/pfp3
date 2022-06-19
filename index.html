@@ -39,6 +39,9 @@
             });
             // 반응형
             if( ww < 769 ){
+                ww = window.innerWidth;
+                window.addEventListener('resize', function() {
+            });
                 // 헤더 햄버거 버튼
                 $("header .allmenu").click(function(e){
                     e.preventDefault();
@@ -46,6 +49,7 @@
                     $(this).toggleClass("x");
                     // 대메뉴 나오게
                     $("header .gnb").toggleClass("moveShow");
+                    return false;
                 });
                 // 모바일에서 대메뉴 클릭시 바로 이동 아니고 서브메뉴 나옴
                 $("header .gnb li .h4 a").attr("href","#");
