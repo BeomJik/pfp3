@@ -1,0 +1,163 @@
+footer {  
+  padding: 120px 0;
+  height: 60%;
+}
+
+footer .wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+ .top{
+  
+  display: flex;
+  justify-content: space-evenly;
+  height: 50%;
+}
+
+ .top h1.h1{  
+  width: 25%;
+}
+.top h1.h1 a {   
+  font-size: 0;
+  display: block;
+  background: url(../img/dalkomm.svg) no-repeat;
+  width: 250px;
+  height: 64px;
+  background-size: cover;
+}
+
+ .top .fnb{ 
+  display: flex;
+  width: 75%;
+  justify-content: space-between;
+}
+
+ .top .fnb li{   
+}
+
+ .top .fnb li h2.h4{
+  
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+ .top .fnb li .fSub{ 
+   
+  line-height: 3;
+   
+}
+ .top .fnb li .fSub li{
+  
+}
+
+ .top .fnb li .fSub li a{  
+  color: #646464;
+  font-weight: 500;
+  position: relative;
+}
+
+.top .fnb li .fSub li a::after{
+  content: "";
+  display: block;
+  transform: scaleX(0);
+  height: 1px;
+  background-color: #000;
+  transform-origin: top right;
+  transition: all 500ms ease-in-out;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.top .fnb li:nth-child(1) .fSub li:nth-child(1) a::after{
+  background-color: #eb5c2a; 
+}
+
+.top .fnb li .fSub li a:hover::after{
+  transform: scaleX(1);
+  transform-origin: top left;
+}
+
+.top .fnb li:nth-child(1) .fSub li:nth-child(1) a{
+  color: #eb5c2a;
+}
+.bottom{  
+    height: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    border-top: 1px solid #eee;
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+.bottom select{ 
+  width: 300px;
+  height: 80px;
+  margin-right: 25%;
+  appearance: none;
+  background-color: #fff;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 2px solid #000;
+  background: url(../img/select-plus.svg) no-repeat 100% 50%;
+  
+}
+
+
+.bottom address{ 
+  width: 50%;
+  color: rgba(0,0,0,0.4);
+  font-weight: 500;
+  line-height: 1.4;
+  height: 80px;
+}
+
+ .bottom address strong{
+  
+  color: #000;
+}
+
+.bottom .download{  
+  width: 50%;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.bottom .download a{
+  display: inline-block;
+  width: 200px;
+  height: 60px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 30px;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+ .bottom .download .appStore{
+  background: url(../img/apple.svg) no-repeat 20% 50%;
+}
+
+ .bottom .download .palyStore{
+   background: url(../img/google.svg) no-repeat 15% 50%;
+}
+
+ .bottom .download .qrCode{
+  
+  font-size: 0;
+  width: 153px;
+  height: 153px;
+  border: none;
+  background: url(../img/0UIwa.png) 100% 100% no-repeat;
+  border-radius: initial;
+}

@@ -1,0 +1,223 @@
+#title {
+}
+#title .wrap { 
+  position: relative;
+  padding-top: 400px;
+  padding-bottom: 100px;
+}
+#title h2.h2{
+  color: #f43b00;
+  font-size: 120px;
+  position: absolute;
+  z-index: 2;
+  font-weight: 900;
+  right: 0%;
+  top: 25% ;
+  font-family: 'Jua', sans-serif;
+}
+#title h2.h2 span{
+  transform: translateY(100%);
+  opacity: 0;
+}
+#title h2.h2 span:nth-of-type(1).h2Up{
+   animation: h2Up 0.5s ease-in-out forwards; 
+}
+#title h2.h2 span:nth-of-type(2).h2Up{
+   animation: h2Up 0.5s 0.3s ease-in-out forwards; 
+}
+#title h2.h2 span:nth-of-type(3).h2Up{
+   animation: h2Up 0.5s 0.5s ease-in-out forwards; 
+}
+@keyframes h2Up{
+  0%{
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  80%{
+    transform: translateY(-20%);
+    opacity: 0.8;
+  }
+  100%{
+    transform: translateY(0%);    
+    opacity: 1;
+  }
+}
+#title h2.h2 span:nth-of-type(3){
+  transition: 1.5s;
+  -webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: #f43b00;
+  color: transparent;
+}
+
+#title .titleSlide{  
+  width: 1040px;
+  overflow: inherit;
+  margin-left: 7%;
+}
+#title ul.swiper-wrapper{
+  width: 1040px;
+  height: 612px;
+  display: flex;
+  color: #f43b00;
+  position: relative;
+  margin: 0;
+}
+.slideDown{
+   animation: slideDown 1s ease-in-out forwards; 
+}
+@keyframes slideDown{
+  0%{
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  80%{
+    transform: translateY(10%);
+    opacity: 0.8;
+  }
+  100%{
+    transform: translateY(0%);    
+    opacity: 1;
+  }
+}
+#title ul li{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 612px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+/*! overflow: hidden; */
+}
+#title .swiper-fade .swiper-slide-active{  
+  overflow: initial;
+}
+#title .swiper-fade .swiper-slide-active .p,
+#title .swiper-fade .swiper-slide-active .more{  
+  opacity: 1;
+}
+#title .t0{
+  background-image: url(../img/title1.png);  
+}
+#title .t1{
+  background-image: url(../img/title2.png);
+}
+#title .t2{
+  background-image: url(../img/title3.png);
+}
+#title .t3{
+  background-image: url(../img/title4.png);
+}
+#title ul li img{
+ 
+}
+#title ul .li h2{
+  margin-bottom: 10px;
+  transition: all 0.4s;
+  font-size: 80px;
+  font-weight: 700;
+}
+#title ul .swiper-slide p{
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.6;
+  position: absolute;
+  top: -50px;
+  left: 90px;
+  color: #f43b00;
+  transition: all 0.3s;
+  opacity: 0;
+}
+#title ul .swiper-slide p.tSCurrent,
+#title ul .swiper-slide a.tSCurrent{
+  opacity: 1;  
+}
+#title ul .li a{
+  border-bottom: 2px solid #f43b00;
+  display: block;
+  width: fit-content;
+  line-height: 1.5;
+  font-size: 22px;
+  color: #f43b00;
+  font-weight: 600;
+  position: absolute;
+  top: 40px;
+  left: 90px;
+  transition: all 0.3s;
+  opacity: 0;
+}
+
+#title .swiper-pagination{
+  position: absolute;
+  top: -80px;
+  left: 90px; 
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  height: fit-content;
+}
+#title .swiper-pagination .swiper-pagination-bullet{
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: #f9ceb5;
+  font-size: 0;
+  transition: all 0.5s;
+  opacity: 1;
+  border-radius: 50%;
+}
+#title .swiper-pagination .swiper-pagination-bullet-active{
+  background-color: #f43b00 !important;
+}
+#popup{  
+  position: fixed;
+  bottom: 0;
+  right: 5%;
+  width: 175px;
+  height: 155px;
+  background-color: #f43b00;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+  border-radius: 20px 20px 0 0;
+  z-index: 2;
+}
+#popup::before{  
+  content: "";
+  display: block;
+  background-image: url(../img/tms_img_20220408152108_3.png);
+  width: 641px;
+  height: 581px;
+  background-size: 20%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -116px;
+  left: calc(50% - 72px);
+}
+#popup h3.h3{  
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 2;
+}
+#popup p.p{ 
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  
+}
+#popup a.close{ 
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0;
+  width: 24px;
+  height: 24px;
+  background-image: url(../img/floating_close.svg);
+  background-size: 100%;
+}

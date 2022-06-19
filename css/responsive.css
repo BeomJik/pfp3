@@ -1,0 +1,95 @@
+@media screen and (max-width:480px){
+  header{
+    height: 50px;
+    padding: 10px;
+  }
+  header h1.h1{
+    z-index: 1;
+  }
+  header .wrap{
+  }
+  header ul.gnb::before{
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+  }
+  header ul.gnb{
+    display: flex;
+    position: fixed;
+    left: 100%;
+    top: 100px;
+    flex-direction: column;
+    align-items: start;
+    padding: 20px;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+  }
+  header .gnb.moveShow{
+    left: 0px; 
+    opacity: 1;
+  }
+  header ul.gnb > li{
+    height: fit-content;
+    width: calc(100% - 20px);
+  }
+  header ul.gnb > li::after{
+    background-color: transparent;
+  }
+  header ul.gnb li h2.h4{    
+    align-items: start;
+    flex-direction: initial;
+    justify-content: space-between;
+  }
+  header ul.gnb li h2.h4::after{
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    transform: rotate(-45deg);
+    transition: all 0.5s;
+    position: absolute; 
+    right: 10%;
+    top: 50%;
+  }
+  header ul.gnb li h2.h4.rot180::after{
+    transform: rotate(135deg);
+  }
+  header ul.gnb li:nth-of-type(4) h2.h4 a::before{
+  transform: translateX(150px) translateY(20px);
+  }
+  header ul.gnb li:nth-of-type(5) h2.h4 a::before{
+    transform: translateX(90px) translateY(20px);
+  }
+  header ul.gnb li h2.h4 a{
+    padding: 0;
+    font-size: 30px;
+    line-height: 2;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  header ul.gnb li .sub{
+    display: none;
+    background: #fff;
+    position: static;
+    color: #000;
+    opacity: 1;
+    transition: all 0s;
+  }
+  header .allmenu{
+    display: flex;
+    right: calc(7% - 12.5px);
+    top: calc(41% - 12.5px);
+  }
+  #title .wrap{
+    padding: 0;
+  }
+} 

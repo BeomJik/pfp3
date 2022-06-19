@@ -1,0 +1,185 @@
+header {    
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  box-sizing: border-box;
+  height: 120px;
+  top: 0;
+  transform: translateY(-100%) !important;
+  transition: all 0.3s;
+}
+header.show{
+  transform: initial !important;
+}
+header .wrap{ 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+header h1.h1{  
+  width: 10%;
+}
+header h1 a{   
+  font-size: 0;
+  display: block;
+  background-image: url(../img/dalkomm.svg);
+  width: 117px;
+  height: 30px;
+}
+header .right{
+  display: flex;
+  justify-content: space-between;
+  width: 45%;
+  align-items: center;
+}
+header ul.gnb {    
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+header ul.gnb > li{
+  position: relative;
+  box-sizing: border-box;
+  height: 120px;
+}
+header ul.gnb > li::after{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #f43b00;
+  transition: all 0.3s;
+  transform: scale(0);
+}
+header ul.gnb > li:hover::after{
+  transform: scaleX(1);
+  transform-origin: top left;
+}
+header ul.gnb li h2.h4{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+header ul.gnb li h2.h4 a{
+  display: block;
+  padding: 50px 0;
+  font-weight: 600;
+  font-size: 18px;
+}
+header ul.gnb li:nth-of-type(4) h2.h4 a::before,
+header ul.gnb li:nth-of-type(5) h2.h4 a::before{
+  content: "";
+  display: block;
+  width: 4px;
+  height: 4px;
+  background-color: #f43b00;
+  border-radius: 4px;
+  transform: translateY;
+}
+header ul.gnb li:nth-of-type(4) h2.h4 a::before{
+  transform: translateX(100px) translateY(5px);
+}
+header ul.gnb li:nth-of-type(5) h2.h4 a::before{
+  transform: translateX(52px) translateY(5px);
+}
+header ul.gnb li .sub{
+  text-align: left;
+  width: 175px;
+  padding: 20px 20px 20px 20px;
+  opacity: 0;
+  transition: all 0.5s;
+  background-color: #fbf4e4;
+  border-radius: 10px;
+  box-sizing: border-box;
+  position: absolute;
+  left: -45px;
+}
+header ul.gnb li:hover .sub{
+  opacity: 1;
+}
+
+header ul.gnb li .sub li{  
+}
+header ul.gnb li .sub li a{
+  color: #000;
+  display: block;
+  transition: all 0.2s;
+  line-height: 2;
+  font-size: 18px;
+}
+header ul.enb{
+  display: flex;
+  width: 15%;
+  justify-content: space-around;
+  align-items: center; 
+}
+header ul.enb li{
+
+}
+header ul.enb li a{
+  font-size: 0;
+  display: block;
+}
+header ul.enb li:nth-child(1) a{ 
+  background-image: url(../img/search.svg);
+  width: 27px;
+  height: 27px;
+  background-size: 100%;
+}
+header ul.enb li:nth-child(2) a{ 
+  background-image: url(../img/lang.svg);
+  width: 24px;
+  height: 24px;
+  background-size: 100%;
+}
+header .allmenu {  
+  position: absolute;
+  right: calc(90% - 12.5px);
+  top: calc(45% - 12.5px);
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 25px;
+  width: 25px;
+  font-size: 0;
+  transition: all 0.3s;
+  z-index: 1;
+  display: none;
+}
+header .allmenu::before{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  transform: translateY(7px);
+  transition: all 0.3s;
+}
+header .allmenu span{  
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  transition: all 1s;
+}
+header .allmenu::after{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  transition: all 0.3s;
+}
+header .allmenu.x::before{
+  transform: translateY(15px) rotate(-45deg);
+}
+header .allmenu.x span{  
+  transform: translateY(0px) translateX(-30px) ;
+  opacity: 0;
+}
+header .allmenu.x::after{
+  transform: translateY(-8px) rotate(45deg);
+}
