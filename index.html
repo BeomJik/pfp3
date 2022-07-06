@@ -39,29 +39,40 @@
             });
             // 반응형
             if( ww < 769 ){
-                ww = window.innerWidth;
                 window.addEventListener('resize', function() {
-            });
-                // 헤더 햄버거 버튼
-                $("header .allmenu").click(function(e){
-                    e.preventDefault();
-                    // 햄버거 버튼 모양 변경
-                    $(this).toggleClass("x");
-                    // 대메뉴 나오게
-                    $("header .gnb").toggleClass("moveShow");
-                    return false;
+                    ww = window.innerWidth;
                 });
                 // 모바일에서 대메뉴 클릭시 바로 이동 아니고 서브메뉴 나옴
-                $("header .gnb li .h4 a").attr("href","#");
-                $("header .gnb li").click(function(){                      
+                let HgnbLi =  document.querySelector("header .gnb li");
+                let HgnbLiH4A = document.querySelector("header .gnb li .h4 a");
+                HgnbLiH4A.href = '#';
+                HgnbLi.addEventListener("click",function(){                    
                     $(this).children("header .gnb li .h4").toggleClass("rot180");
                     $("header .gnb li").not(this).children("header .gnb li .h4").removeClass("rot180");
                     $(this).children("header .gnb li .sub").slideToggle().toggleClass("rot180");
                     $("header .gnb li").not(this).children("header .gnb li .sub").slideUp().removeClass("rot180");
                 });
+                
+                // $("header .gnb li").click(function(){                      
+                //     $(this).children("header .gnb li .h4").toggleClass("rot180");
+                //     $("header .gnb li").not(this).children("header .gnb li .h4").removeClass("rot180");
+                //     $(this).children("header .gnb li .sub").slideToggle().toggleClass("rot180");
+                //     $("header .gnb li").not(this).children("header .gnb li .sub").slideUp().removeClass("rot180");
+                // });
+                
             }
-            
+                // 헤더 햄버거 버튼
+                let HallMenu = document.querySelector(".allmenu");
+                let Hgnb = document.querySelector("header .gnb");
+                HallMenu.addEventListener("click",function(e){
+                    e.preventDefault();
+                    // 햄버거 버튼 모양 변경
+                    this.classList.toggle("x");
+                    // 대메뉴 나오게
+                    Hgnb.classList.toggle("moveShow");
+                });
 
+            
             // 타이틀 슬라이드
             $("#title .button li a").click(function(e){
                 e.preventDefault();
@@ -196,7 +207,7 @@
                     <h2 class="h4"><a href="">SHOP</a></h2>
                 </li>
             </ul>
-            <a href="" class="allmenu">전체메뉴<span></span></a>
+            <a class="allmenu">전체메뉴<span></span></a>
         </div>
     </header>
     <!-- 타이틀 영역 -->

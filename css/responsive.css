@@ -2,11 +2,14 @@
   header{
     height: 50px;
     padding: 10px;
+    position: absolute;
   }
   header h1.h1{
     z-index: 1;
   }
   header .wrap{
+    width: 100%;
+    max-width: 480px;
   }
   header ul.gnb::before{
     content: '';
@@ -122,8 +125,7 @@
   #popup h3.h3{
     
   }
-  #popup p.p{
-    
-  font-size: 12px;
+  #popup p.p{    
+    font-size: 12px;
   }
 } 
