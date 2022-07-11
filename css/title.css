@@ -51,7 +51,7 @@
 
 #title .titleSlide{  
   width: 1040px;
-  overflow: inherit;
+  overflow: initial;
   margin-left: 7%;
 }
 #title ul.swiper-wrapper{
@@ -88,7 +88,6 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
-/*! overflow: hidden; */
 }
 #title .swiper-fade .swiper-slide-active{  
   overflow: initial;
