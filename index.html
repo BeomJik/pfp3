@@ -43,23 +43,19 @@
                     ww = window.innerWidth;
                 });
                 // 모바일에서 대메뉴 클릭시 바로 이동 아니고 서브메뉴 나옴
-                let HgnbLi =  document.querySelector("header .gnb li");
-                let HgnbLiH4A = document.querySelector("header .gnb li .h4 a");
-                HgnbLiH4A.href = '#';
-                HgnbLi.addEventListener("click",function(){                    
-                    $(this).children("header .gnb li .h4").toggleClass("rot180");
-                    $("header .gnb li").not(this).children("header .gnb li .h4").removeClass("rot180");
-                    $(this).children("header .gnb li .sub").slideToggle().toggleClass("rot180");
-                    $("header .gnb li").not(this).children("header .gnb li .sub").slideUp().removeClass("rot180");
-                });
-                
-                // $("header .gnb li").click(function(){                      
-                //     $(this).children("header .gnb li .h4").toggleClass("rot180");
-                //     $("header .gnb li").not(this).children("header .gnb li .h4").removeClass("rot180");
-                //     $(this).children("header .gnb li .sub").slideToggle().toggleClass("rot180");
-                //     $("header .gnb li").not(this).children("header .gnb li .sub").slideUp().removeClass("rot180");
-                // });
-                
+                let HgnbLi =  document.querySelectorAll("header .gnb li");
+                for (let i = 0; i < HgnbLi.length - 1; i++) {
+                    HgnbLi[i].addEventListener("click",function(){                    
+                        $(this).children("header .gnb li .h4").toggleClass("rot180");
+                        $("header .gnb li").not(this).children("header .gnb li .h4").removeClass("rot180");
+                        $(this).children("header .gnb li .sub").slideToggle().toggleClass("rot180");
+                        $("header .gnb li").not(this).children("header .gnb li .sub").slideUp().removeClass("rot180");
+                    });
+                }
+                let HgnbLiH4A = document.querySelectorAll("header .gnb li .h4 a");
+                for (let i = 0; i < HgnbLiH4A.length - 1; i++) {
+                    HgnbLiH4A[i].href = '#';
+                }
             }
                 // 헤더 햄버거 버튼
                 let HallMenu = document.querySelector(".allmenu");
@@ -85,7 +81,7 @@
             mainsectionTop = $("main section:eq(1)").offset().top;
             windowTop = $(window).scrollTop();
 
-            $("header").addClass("show");
+            $("header").addClass("show"); 
             // 스크롤 이벤트
             $(window).scroll(function(){
                 windowTop = $(window).scrollTop();
