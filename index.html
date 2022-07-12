@@ -70,18 +70,24 @@
 
             
             // 타이틀 슬라이드
-            $("#title .button li a").click(function(e){
-                e.preventDefault();
-                $(this).toggleClass("current");
-                $("#title .button li a").not(this).removeClass("current");
-            });
+            let TBtLiA = document.querySelectorAll("#title .button li a");
+            for (let i = 0; i < TBtLiA.length; i++) {
+                TBtLiA.addEventListener("click", function(){
+                    e.preventDefault();
+                    $(this).toggleClass("current");
+                    TBtLiA.not(this).removeClass("current");
+                });
+            }
 
             // 변수
             mainTop = $("main").offset().top;
             mainsectionTop = $("main section:eq(1)").offset().top;
             windowTop = $(window).scrollTop();
 
-            $("header").addClass("show"); 
+            // header animation
+            let Header = document.querySelector("header");
+            Header.classList.add("show");
+
             // 스크롤 이벤트
             $(window).scroll(function(){
                 windowTop = $(window).scrollTop();
@@ -96,9 +102,14 @@
             });
             // 타이틀 애니메이션 
             // h2
-            $("#title h2.h2 span").addClass("h2Up");
+            let TH2S = document.querySelectorAll("#title .h2 span");
+            for (let i = 0; i < TH2S.length; i++) {
+                TH2S[i].classList.add("h2Up");
+                
+            }
             // slide
-            $("#title .titleSlide").addClass("slideDown");            
+            let TTS = document.querySelector("#title .titleSlide");
+            TTS.classList.add("slideDown");
 
         });
     </script>
@@ -124,7 +135,6 @@
                 var slideN = $("#title .swiper-pagination-bullet-active").index();
                 $("#title .swiper-wrapper .t"+slideN).siblings().children("").removeClass("tSCurrent");
                 $("#title .swiper-wrapper .t"+slideN).children().addClass("tSCurrent");
-
             },0);
         });
     </script>
@@ -132,12 +142,13 @@
     <script>
         $(function(){
             // 팝업 fadeIn
-            $("#popup").hide();
-            $("#popup").fadeIn(1000);
+            let Popup = document.querySelector("#popup");
+            Popup.classList.add("show");
             // 팝업 close 클릭시 제거            
-            $("a.close").click(function(){
-                $("#popup").hide();
-                return false;
+            let Close = document.querySelector(".close");
+            Close.addEventListener("click",function(e){
+                e.preventDefault();
+                Popup.style.display = "none";
             });
         });
     </script>
